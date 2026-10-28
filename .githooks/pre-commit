@@ -1,0 +1,14 @@
+#!/bin/sh
+# 本地文档门禁：与 CI（.github/workflows/docs-check.yml）跑同一套检查。
+#
+# 启用（每个克隆各配一次）：git config core.hooksPath .githooks
+# 临时绕过：git commit --no-verify
+set -e
+
+if ! command -v node >/dev/null 2>&1; then
+  echo "跳过文档门禁：未找到 node"
+  exit 0
+fi
+
+node scripts/check-eng-docs.cjs
+node --test scripts/check-eng-docs.test.cjs

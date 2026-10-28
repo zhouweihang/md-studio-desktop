@@ -1,0 +1,34 @@
+name: Engineering docs gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  # Called by deploy.yml so a failing gate blocks the Pages release.
+  workflow_call:
+
+permissions:
+  contents: read
+
+# Read-only and sub-second; cancel superseded runs instead of queueing them.
+concurrency:
+  group: docs-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      # No install step: the gate and its tests use only node builtins.
+      - name: Check engineering docs
+        run: node scripts/check-eng-docs.cjs
+
+      - name: Test the gate itself
+        run: node --test scripts/check-eng-docs.test.cjs

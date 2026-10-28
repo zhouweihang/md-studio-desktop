@@ -1,0 +1,29 @@
+/* mdstudio-theme: name=暗色; mode=dark */
+:root {
+  color-scheme: dark;
+  --md-color-paper: #1b1a16;
+  --md-color-paper-alt: #232119;
+  --md-color-ink: #f2efe7;
+  --md-color-ink-secondary: #d6d1c3;
+  --md-color-muted: #9b968a;
+  --md-color-line: #35322a;
+  --md-color-accent: #e8b099;
+  --md-color-accent-soft: rgba(232, 176, 153, 0.16);
+  --md-color-code-bg: #26241d;
+  --md-color-selection: #4a3a2e;
+  --md-color-danger: #ff9d8a;
+  --md-color-success: #8fd0a8;
+  --md-color-highlight: rgba(255, 205, 70, 0.28);
+  --md-color-shadow: rgba(0, 0, 0, 0.5);
+
+  --md-font-ui: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+  --md-font-mono: "JetBrains Mono", "Cascadia Mono", Consolas, ui-monospace, monospace;
+  --md-font-size-base: 14px;
+  --md-font-size-editor: 15.5px;
+
+  --md-space-1: 4px;
+  --md-space-2: 8px;
+  --md-space-3: 12px;
+  --md-space-4: 16px;
+  --md-space-5: 24px;
+}

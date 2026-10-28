@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: file: mdstudio-asset:; font-src 'self' data: mdstudio-asset:; connect-src 'self' ws:"
+    />
+    <title>MD-Studio</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header id="titlebar">
+        <button
+          id="sidebar-toggle"
+          type="button"
+          data-i18n-title="sidebar.toggle"
+          data-i18n-aria-label="sidebar.toggle"
+        >
+          ☰
+        </button>
+        <span id="doc-title">未命名</span>
+        <span id="doc-dirty" hidden data-i18n-title="doc.dirtyTitle">●</span>
+        <span id="doc-path" title=""></span>
+        <span class="spacer"></span>
+        <span id="mode-badge" hidden></span>
+      </header>
+
+      <div id="tabbar" data-i18n-aria-label="tabbar.label"></div>
+
+      <div id="body">
+        <aside id="sidebar" data-i18n-aria-label="sidebar.label">
+          <div id="sidebar-tabs" role="tablist">
+            <button type="button" data-tab="files" role="tab" data-i18n="sidebar.tab.files">文件</button>
+            <button type="button" data-tab="outline" role="tab" data-i18n="sidebar.tab.outline">大纲</button>
+            <button type="button" data-tab="search" role="tab" data-i18n="sidebar.tab.search">搜索</button>
+          </div>
+          <div id="sidebar-panes">
+            <section id="pane-files" class="pane">
+              <div id="files-toolbar">
+                <button type="button" data-file-action="open-folder" data-i18n-title="files.openFolder" data-i18n="files.openFolder">
+                  打开文件夹
+                </button>
+                <button type="button" data-file-action="new-file" data-i18n-title="files.newFile" data-i18n="files.newFile">
+                  新建文件
+                </button>
+                <button type="button" data-file-action="new-folder" data-i18n-title="files.newFolder" data-i18n="files.newFolder">
+                  新建文件夹
+                </button>
+                <button type="button" data-file-action="refresh" data-i18n-title="files.refresh" data-i18n="files.refresh">
+                  刷新
+                </button>
+              </div>
+              <div id="file-tree" role="tree" data-i18n-aria-label="files.label"></div>
+            </section>
+            <section id="pane-outline" class="pane">
+              <div id="outline-list" role="tree" data-i18n-aria-label="outline.label"></div>
+            </section>
+            <section id="pane-search" class="pane">
+              <div id="search-controls">
+                <input
+                  id="search-input"
+                  type="search"
+                  data-i18n-placeholder="search.placeholder"
+                  placeholder="搜索文件名或内容…"
+                />
+                <div class="search-options">
+                  <select id="search-mode" data-i18n-title="search.scope">
+                    <option value="content" data-i18n="search.mode.content">内容</option>
+                    <option value="name" data-i18n="search.mode.name">文件名</option>
+                  </select>
+                  <label>
+                    <input id="search-case" type="checkbox" />
+                    <span data-i18n="search.case">区分大小写</span>
+                  </label>
+                  <button id="search-cancel" type="button" hidden data-i18n="search.cancel">停止</button>
+                </div>
+              </div>
+              <div id="search-results" aria-live="polite"></div>
+            </section>
+          </div>
+        </aside>
+        <div id="sidebar-resizer" role="separator" aria-orientation="vertical" data-i18n-title="sidebar.resizer"></div>
+        <main id="editor" data-i18n-aria-label="editor.label"></main>
+      </div>
+
+      <footer id="statusbar">
+        <span id="stat-words"></span>
+        <span id="stat-lines"></span>
+        <span id="stat-read"></span>
+        <span id="status-message" aria-live="polite"></span>
+        <span class="spacer"></span>
+        <span id="stat-cursor">1:1</span>
+        <span id="stat-mode"></span>
+        <span id="stat-theme"></span>
+      </footer>
+    </div>
+
+    <div id="dialog-layer" hidden></div>
+    <div id="menu-layer" hidden></div>
+    <div id="toast" hidden></div>
+    <script type="module" src="./app.ts"></script>
+  </body>
+</html>

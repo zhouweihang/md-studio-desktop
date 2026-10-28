@@ -1,0 +1,32 @@
+npm notice run website@0.0.1 npx
+npm notice run rea analyze-javascript-application D:/typora文本软件/Typora/resources/page-dist --detail summary --evidence_output docs/analysis/typora/evidence-pagedist --analysis-timeout-ms 900000 --format json
+{"rea_progress":{"phase":"analyze_javascript_application","completed":0,"total":1,"message":"Inventorying and parsing application artifacts","sequence":1}}
+{"rea_progress":{"phase":"read_javascript_artifacts","completed":0,"total":1,"message":"Reading inventoried JavaScript application sources","sequence":2}}
+{"rea_progress":{"phase":"parse_javascript_sources","completed":0,"total":1,"message":"Processing 27 selected application files","sequence":3}}
+{"rea_progress":{"phase":"process_javascript_artifact_metadata","completed":0,"total":1,"message":"Processing metadata for asset-manifest.json (1/27)","sequence":4}}
+{"rea_progress":{"phase":"process_javascript_artifact_metadata","completed":0,"total":1,"message":"Processing metadata for index.html (2/27)","sequence":5}}
+{"rea_progress":{"phase":"process_javascript_artifact_metadata","completed":0,"total":1,"message":"Processing metadata for license.html (3/27)","sequence":6}}
+{"rea_progress":{"phase":"process_javascript_artifact_metadata","completed":0,"total":1,"message":"Processing metadata for local-setting.html (4/27)","sequence":7}}
+{"rea_progress":{"phase":"parse_javascript_source","completed":0,"total":1,"message":"Parsing and projecting precache-manifest.2e7a1773448ded33c4a799832df3e7ef.js (5/27)","sequence":8}}
+{"rea_progress":{"phase":"javascript_worker_parse","completed":0,"total":1,"message":"JavaScript worker parse: precache-manifest.2e7a1773448ded33c4a799832df3e7ef.js","sequence":9}}
+{"rea_progress":{"phase":"javascript_worker_static","completed":0,"total":1,"message":"JavaScript worker static: precache-manifest.2e7a1773448ded33c4a799832df3e7ef.js","sequence":10}}
+{"rea_progress":{"phase":"javascript_worker_semantic","completed":0,"total":1,"message":"JavaScript worker semantic: precache-manifest.2e7a1773448ded33c4a799832df3e7ef.js","sequence":11}}
+{"rea_progress":{"phase":"javascript_worker_projection","completed":0,"total":1,"message":"JavaScript worker projection: precache-manifest.2e7a1773448ded33c4a799832df3e7ef.js","sequence":12}}
+{"rea_progress":{"phase":"javascript_worker_transfer","completed":0,"total":1,"message":"JavaScript worker transfer: precache-manifest.2e7a1773448ded33c4a799832df3e7ef.js","sequence":13}}
+{"rea_progress":{"phase":"parse_javascript_source","completed":0,"total":1,"message":"Parsing and projecting precache-manifest.971520d5329762f05df4ce724402dc6e.js (6/27)","sequence":14}}
+{"rea_progress":{"phase":"javascript_worker_parse","completed":0,"total":1,"message":"JavaScript worker parse: precache-manifest.971520d5329762f05df4ce724402dc6e.js","sequence":15}}
+{"rea_progress":{"phase":"javascript_worker_static","completed":0,"total":1,"message":"JavaScript worker static: precache-manifest.971520d5329762f05df4ce724402dc6e.js","sequence":16}}
+{"rea_progress":{"phase":"javascript_worker_semantic","completed":0,"total":1,"message":"JavaScript worker semantic: precache-manifest.971520d5329762f05df4ce724402dc6e.js","sequence":17}}
+{"rea_progress":{"phase":"javascript_worker_projection","completed":0,"total":1,"message":"JavaScript worker projection: precache-manifest.971520d5329762f05df4ce724402dc6e.js","sequence":18}}
+{"rea_progress":{"phase":"javascript_worker_transfer","completed":0,"total":1,"message":"JavaScript worker transfer: precache-manifest.971520d5329762f05df4ce724402dc6e.js","sequence":19}}
+{"rea_progress":{"phase":"parse_javascript_source","completed":0,"total":1,"message":"Parsing and projecting service-worker.js (7/27)","sequence":20}}
+{"rea_progress":{"phase":"javascript_worker_parse","completed":0,"total":1,"message":"JavaScript worker parse: service-worker.js","sequence":21}}
+{"rea_progress":{"phase":"javascript_worker_static","completed":0,"total":1,"message":"JavaScript worker static: service-worker.js","sequence":22}}
+{"rea_progress":{"phase":"javascript_worker_semantic","completed":0,"total":1,"message":"JavaScript worker semantic: service-worker.js","sequence":23}}
+{"rea_progress":{"phase":"javascript_worker_projection","completed":0,"total":1,"message":"JavaScript worker projection: service-worker.js","sequence":24}}
+{"rea_progress":{"phase":"javascript_worker_transfer","completed":0,"total":1,"message":"JavaScript worker transfer: service-worker.js","sequence":25}}
+{"rea_progress":{"phase":"process_javascript_artifact_metadata","completed":0,"total":1,"message":"Processing metadata for setting.html (8/27)","sequence":26}}
+{"rea_progress":{"phase":"parse_javascript_source","completed":0,"total":1,"message":"Parsing and projecting static/js/0.99879679.chunk.js (9/27)","sequence":27}}
+{"rea_progress":{"phase":"javascript_worker_parse","completed":0,"total":1,"message":"JavaScript worker parse: static/js/0.99879679.chunk.js","sequence":28}}
+{"rea_progress":{"phase":"javascript_worker_static","completed":0,"total":1,"message":"JavaScript worker static: static/js/0.99879679.chunk.js","sequence":29}}
+page-dist retry exit=1

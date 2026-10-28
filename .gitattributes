@@ -1,0 +1,3 @@
+# 校验清单必须保持 LF：`sha256sum -c` 不剥掉行尾的 \r，CRLF 换行会把文件名读成
+# `evidence-lib-asar\r` 从而整份校验失败（Windows 上 core.autocrlf=true 时默认转换）。
+docs/analysis/**/SHA256SUMS text eol=lf
