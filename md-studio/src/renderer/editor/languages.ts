@@ -22,7 +22,7 @@ import { haskell } from '@codemirror/legacy-modes/mode/haskell';
 import { erlang } from '@codemirror/legacy-modes/mode/erlang';
 import { clojure } from '@codemirror/legacy-modes/mode/clojure';
 import { shell } from '@codemirror/legacy-modes/mode/shell';
-import { powerShell } from '@codemirror/legacy-modes/mode/powerShell';
+import { powerShell } from '@codemirror/legacy-modes/mode/powershell';
 import { dockerFile } from '@codemirror/legacy-modes/mode/dockerfile';
 import { toml } from '@codemirror/legacy-modes/mode/toml';
 import { diff } from '@codemirror/legacy-modes/mode/diff';
