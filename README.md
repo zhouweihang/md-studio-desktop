@@ -72,6 +72,12 @@ node --test scripts/check-eng-docs.test.cjs
 git config core.hooksPath .githooks      # 可选：提交前自动跑上面两条
 ```
 
+## 参与贡献与变更
+
+- [CONTRIBUTING.md](CONTRIBUTING.md) —— 本地开发、提交前检查、打包约定，以及哪些 PR 会在同步时被覆盖。
+- [CHANGELOG.md](CHANGELOG.md) —— 版本变更与已知限制。
+- 缺陷与功能建议请走 issue 模板；`md-studio/` 目录由上游同步生成，请勿直接提交改动。
+
 ## 许可
 
 **Apache-2.0** —— 允许商用、修改、再分发。分发（源码或二进制、修改与否）时必须：

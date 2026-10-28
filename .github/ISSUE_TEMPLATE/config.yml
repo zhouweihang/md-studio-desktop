@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 功能说明与本地构建
+    url: https://github.com/zhouweihang/md-studio-desktop#readme
+    about: README 里有功能列表、验证命令与三端打包说明
+  - name: 变更记录与已知限制
+    url: https://github.com/zhouweihang/md-studio-desktop/blob/main/CHANGELOG.md
+    about: 先确认问题是否已知、是否已在更新中修复
+  - name: 安全相关问题
+    url: https://github.com/zhouweihang
+    about: 请勿公开提交安全漏洞，直接联系维护者

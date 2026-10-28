@@ -1,0 +1,76 @@
+name: 缺陷报告
+description: 崩溃、渲染异常或行为与预期不符
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        提交前请先搜索现有 issue，避免重复。**安全漏洞请勿公开提交**，直接联系维护者。
+
+        贴日志时请去掉文档正文等隐私内容。
+  - type: input
+    id: version
+    attributes:
+      label: 应用版本
+      description: 安装包文件名里的版本，或“关于”中显示的版本
+      placeholder: 0.1.0
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: 操作系统
+      options:
+        - Windows 11
+        - Windows 10
+        - macOS（Apple 芯片）
+        - macOS（Intel）
+        - Linux
+    validations:
+      required: true
+  - type: dropdown
+    id: package
+    attributes:
+      label: 安装方式
+      options:
+        - NSIS 安装包（.exe）
+        - dmg
+        - zip
+        - AppImage
+        - deb
+        - 源码运行（npm run dev）
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤
+      description: 从打开应用到问题出现的最短路径；涉及文件时说明类型与大致行数
+      placeholder: |
+        1. 打开应用
+        2. 打开一个约 5000 行的 Markdown
+        3. 在表格里按 Tab
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: 期望行为 / 实际行为
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: 日志、报错或截图
+      description: 主进程日志、开发者工具 Console、录屏都可以
+      render: shell
+    validations:
+      required: false
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 提交前确认
+      options:
+        - label: 已搜索现有 issue，没有重复
+          required: true
+        - label: 安装时出现了 SmartScreen 或 Gatekeeper 提示（如是，请在正文注明具体提示）

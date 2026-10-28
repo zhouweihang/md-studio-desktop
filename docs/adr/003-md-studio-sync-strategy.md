@@ -14,7 +14,7 @@
 ## Decision
 
 1. **主仓库是唯一来源。** 代码、测试、工程文档的改动一律先落在主仓库，提交后再同步。
-2. **发布仓库是生成物。** 其中的 `md-studio/` 不手工编辑。发布仓库只承载：同步出的 `md-studio/` 与 `docs/`、文档门禁脚本，以及发布专属文件（`LICENSE`、`NOTICE`、`README.md`、`.gitignore`、`.github/workflows/package.yml`）。
+2. **发布仓库是生成物。** 其中的 `md-studio/` 不手工编辑。发布仓库只承载：同步出的 `md-studio/` 与 `docs/`、文档门禁脚本，以及发布专属文件（`LICENSE`、`NOTICE`、`README.md`、`CONTRIBUTING.md`、`CHANGELOG.md`、`.gitignore`、`.github/workflows/package.yml`、`.github/ISSUE_TEMPLATE/`、`.github/PULL_REQUEST_TEMPLATE.md`）。
 3. **发布专属文件版本化在主仓库** `scripts/publish-template/`，由同步脚本覆盖写入发布仓库。改它们 = 改主仓库的模板，改完再同步。
 4. **同步是一条命令**：主仓库里的 `node scripts/publish-md-studio.cjs`。脚本从主仓库 `HEAD` 生成快照 → 覆盖模板 → 提交 → 推送；提交信息固定为 `Sync from main@<sha>`，发布仓库的任一提交都能反查到主仓库状态。脚本与模板目录本身**不随发布仓库分发**（它们只服务主仓库的维护流程）。
 5. **版本号归主仓库，tag 归发布仓库**：`version` 在 `md-studio/package.json`，`v*` tag 打在发布仓库的同步提交上，由它触发三端打包与 Release。
