@@ -3,6 +3,8 @@
 本地优先的 Markdown 编辑器桌面应用：Electron + CodeMirror 6，Windows / macOS / Linux 三端。
 
 > 发布名称是 **md-studio-desktop**（仓库、包名、安装包一致），与 GitHub 上其它同名项目无关。
+>
+> `md-studio/` 由维护者从上游开发仓库同步生成（见 ADR-003），请勿在该目录直接提交改动；需要修改请先开 issue 讨论。
 
 ## 功能
 

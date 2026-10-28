@@ -87,7 +87,7 @@ flowchart TB
 
 - 开发：`npm --prefix md-studio run dev`（electron-vite，主/预加载/渲染热更新）。包管理器决策：npm（B2-2）。
 - 测试：Vitest 单元（`tests/`）+ Playwright-Electron 端到端（`e2e/app.spec.ts`、`e2e/ime.spec.ts`）。
-- 打包：electron-builder，配置在 `md-studio/package.json` 的 `build` 字段。Windows → NSIS（x64）；macOS → dmg + zip（x64/arm64）；Linux → AppImage + deb。产物落在 `md-studio/release/`，脚本 `dist:win` / `dist:mac` / `dist:linux`。三端由 `.github/workflows/package.yml` 的系统矩阵分别构建（Electron 无法在单一系统上交叉打包），打 `v*` tag 时自动汇总发布 Release。本机实测：Windows 安装包构建成功，打包后的应用可启动（日志 `[md-studio] ready` + 渲染层就绪）。
+- 打包：electron-builder，配置在 `md-studio/package.json` 的 `build` 字段。Windows → NSIS（x64）；macOS → dmg + zip（x64/arm64）；Linux → AppImage + deb。产物落在 `md-studio/release/`，脚本 `dist:win` / `dist:mac` / `dist:linux`。三端由发布仓库 [`zhouweihang/md-studio-desktop`](https://github.com/zhouweihang/md-studio-desktop) 的 `.github/workflows/package.yml` 用系统矩阵分别构建（Electron 无法在单一系统上交叉打包），打 `v*` tag 时自动汇总发布 Release；v0.1.0 已用该流程产出 7 个安装包。本机实测：Windows 安装包构建成功，打包后的应用可启动（日志 `[md-studio] ready` + 渲染层就绪）。
 - 运行时依赖：Node ≥ 22；无外部服务依赖（离线可用），Pandoc 为可选外部工具。
 
 ## 5. 变更日志
