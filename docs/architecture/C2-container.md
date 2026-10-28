@@ -87,7 +87,8 @@ flowchart TB
 
 - 开发：`npm --prefix md-studio run dev`（electron-vite，主/预加载/渲染热更新）。包管理器决策：npm（B2-2）。
 - 测试：Vitest 单元（`tests/`）+ Playwright-Electron 端到端（`e2e/app.spec.ts`、`e2e/ime.spec.ts`）。
-- 打包：electron-builder，配置在 `md-studio/package.json` 的 `build` 字段。Windows → NSIS（x64）；macOS → dmg + zip（x64/arm64）；Linux → AppImage + deb。产物落在 `md-studio/release/`，脚本 `dist:win` / `dist:mac` / `dist:linux`。三端由发布仓库 [`zhouweihang/md-studio-desktop`](https://github.com/zhouweihang/md-studio-desktop) 的 `.github/workflows/package.yml` 用系统矩阵分别构建（Electron 无法在单一系统上交叉打包），打 `v*` tag 时自动汇总发布 Release；v0.1.0 已用该流程产出 7 个安装包。本机实测：Windows 安装包构建成功，打包后的应用可启动（日志 `[md-studio] ready` + 渲染层就绪）。
+- 打包：electron-builder，配置在 `md-studio/electron-builder.cjs`（签名方式按环境分支，不写死密钥；见 ADR-004）。Windows → NSIS（x64）；macOS → dmg + zip（x64/arm64）；Linux → AppImage + deb。产物落在 `md-studio/release/`，脚本 `dist:win` / `dist:mac` / `dist:linux`。三端由发布仓库 [`zhouweihang/md-studio-desktop`](https://github.com/zhouweihang/md-studio-desktop) 的 `.github/workflows/package.yml` 用系统矩阵分别构建（Electron 无法在单一系统上交叉打包），打 `v*` tag 时自动汇总发布 Release；v0.1.0 已用该流程产出 7 个安装包。本机实测：Windows 安装包构建成功，打包后的应用可启动（日志 `[md-studio] ready` + 渲染层就绪）。
+- 签名与公证：macOS 用 Developer ID + 硬化运行时（`build/entitlements.mac*.plist`）+ `notarize`；Windows 用 Azure Trusted Signing（`win.azureSignOptions`）或 `.pfx`（`WIN_CSC_LINK`）。CI 在密钥存在时校验签名与公证票据，缺失时降级为未签名产物并在 Job Summary 标注（ADR-004）。
 - 运行时依赖：Node ≥ 22；无外部服务依赖（离线可用），Pandoc 为可选外部工具。
 
 ## 5. 变更日志
@@ -96,3 +97,4 @@ flowchart TB
 - 2026-10-28 状态行对齐实现进度：四个容器均已落地（主进程服务为平铺文件而非 `services/` 子目录，IPC 为单文件 `src/shared/ipc.ts`）；路径未回填，见状态行。
 - 2026-10-28 回填实现路径：按 `src/main/`、`src/renderer/`、`src/shared/` 真实文件与符号补齐 file:line；补入 `history/` 存储项；修正两处与实现不符的描述——渲染进程为**单窗口多标签**（不再是每窗口一文档），打包流程**尚未实现**（原写 electron-builder → NSIS）。
 - 2026-10-28 打包落地：electron-builder 与三系统 CI 矩阵接入（Windows 已在本机实测构建并启动），§4 同步更新。
+- 2026-10-28 签名接入：打包配置迁到 `electron-builder.cjs` 以支持按环境签名；补 macOS entitlements、公证与 CI 签名校验（ADR-004）。

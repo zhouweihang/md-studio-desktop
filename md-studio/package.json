@@ -25,61 +25,6 @@
     "dist:mac": "npm run build && electron-builder --mac --publish never",
     "dist:linux": "npm run build && electron-builder --linux --publish never"
   },
-  "build": {
-    "appId": "com.zhouweihang.mdstudiodesktop",
-    "productName": "MD-Studio Desktop",
-    "copyright": "Copyright © 2026 zhouweihang",
-    "artifactName": "${name}-${version}-${os}-${arch}.${ext}",
-    "directories": {
-      "output": "release"
-    },
-    "files": [
-      "out/**/*",
-      "package.json"
-    ],
-    "win": {
-      "target": [
-        {
-          "target": "nsis",
-          "arch": [
-            "x64"
-          ]
-        }
-      ]
-    },
-    "nsis": {
-      "oneClick": false,
-      "perMachine": false,
-      "allowToChangeInstallationDirectory": true
-    },
-    "mac": {
-      "target": [
-        {
-          "target": "dmg",
-          "arch": [
-            "x64",
-            "arm64"
-          ]
-        },
-        {
-          "target": "zip",
-          "arch": [
-            "x64",
-            "arm64"
-          ]
-        }
-      ],
-      "category": "public.app-category.productivity"
-    },
-    "linux": {
-      "target": [
-        "AppImage",
-        "deb"
-      ],
-      "category": "Office",
-      "maintainer": "zhouweihang <3601486135@qq.com>"
-    }
-  },
   "dependencies": {
     "chokidar": "^6.0.0",
     "zod": "^4.6.7"

@@ -55,3 +55,9 @@
 | ~~B5-5~~ | 导出字体内联字形覆盖 | **Completed 2026-10-28**：`settings.exportOptions.inlineMathFonts` 由布尔改为三档 `off | common | all`（旧布尔值 `true→common`/`false→off` 迁移）；`katex-fonts.ts` 补齐 Fraktur/SansSerif 粗斜体/Script 共 20 个 woff2。实测体积：`common` 15 个 ≈ 265 KB、`all` 20 个 ≈ 339 KB（`tests/export/inline-fonts.test.ts` 打印并断言 all > common、woff2 引用全部消失）；设置面板改为三档下拉 | 已闭环 |
 | ~~B5-6~~ | 内容模式全量搜索耗时 | **Completed 2026-10-28**：`main/content-cache.ts` 缓存**文件正文**（按 path+mtime+size，64 MB LRU），10k 文件暖扫描 **36 ms**（原 2.8 s）；冷启动仍 ~2.8–3.2 s（读盘下界）。工作区已被 chokidar 监听时（`setTrustedRoot`）跳过每文件 `stat`——Windows 上 10k 次 stat 约 950 ms；新鲜度由监听事件（`invalidateContentCachePath`）与保存钩子（`writeTextAtomic`）保证，未监听根仍逐次比对 mtime/size。测试：`tests/perf/scale.test.ts`（暖 <1 s）、`tests/workspace/search.test.ts` 信任根失效用例 | 已闭环 |
 | ~~B5-7~~ | 未命名标签的本地化命名 | **Completed 2026-10-28**：`SessionPool` 新增 `untitled` 标记与 `setPath()`（另存为/重命名/删除文件统一走这里），显示名不再读存储的 `name`——标签栏与标题栏都在渲染时用 `tr('tabs.untitled')` 计算，语言切换后重绘即生效（`renameUntitledTabs` 已删除）。测试：`tests/platform/tabs.test.ts`「未保存标记」3 例 | 已闭环 |
+
+## B6. 发布签名（ADR-004）
+
+| ID | 项 | 证据/说明 | 收尾标准 |
+|---|---|---|---|
+| B6-1 | 发布包签名与公证的密钥配置 | **2026-10-28 代码就绪**：`md-studio/electron-builder.cjs` 按环境注入 `win.azureSignOptions`；`build/entitlements.mac.plist` + `entitlements.mac.inherit.plist` 配合 `hardenedRuntime` / `notarize`；发布仓库 `package.yml` 增加 macOS/Windows 签名准备步骤，以及 `Get-AuthenticodeSignature`、`codesign`/`stapler`/`spctl` 校验。单元测试 `tests/build/electron-builder-config.test.ts` 覆盖“有密钥才签”的分支。密钥本身（Apple Developer Program 会员、Azure Trusted Signing 账户与证书 profile）尚未申请，当前 CI 仍产出未签名包 | 按 ADR-004 的表格配齐 secret/variable 后打一个 `v*` tag：Windows 校验 `Valid`、macOS `stapler validate` 与 `spctl --assess` 通过，真机首次打开无 Gatekeeper 拦截 |
